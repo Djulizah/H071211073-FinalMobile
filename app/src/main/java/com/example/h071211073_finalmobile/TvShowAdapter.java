@@ -35,7 +35,6 @@ public class TvShowAdapter extends RecyclerView.Adapter<TvShowAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TvShowAdapter.ViewHolder holder, int position) {
-        Context context = holder.itemView.getContext();
         TvShow tvShow = tvShowList.get(position);
         holder.setData(tvShow);
     }

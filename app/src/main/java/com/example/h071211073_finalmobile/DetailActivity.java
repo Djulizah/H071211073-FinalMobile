@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 public class DetailActivity extends AppCompatActivity {
-    private ImageView imgBack, imgPoster, btnBack, btnMark;
+    private ImageView imgBack, imgPoster, btnBack, btnMark, imgIcon;
     private TextView tvTitle, tvDate, tvRating, tvSynopsis;
     private DatabaseHelper databaseHelper;
 
@@ -23,6 +23,7 @@ public class DetailActivity extends AppCompatActivity {
 
         imgBack = findViewById(R.id.img_back);
         imgPoster = findViewById(R.id.img_poster);
+        imgIcon = findViewById(R.id.img_icon);
         tvTitle = findViewById(R.id.tv_title);
         tvDate = findViewById(R.id.tv_date);
         tvRating = findViewById(R.id.tv_rating);
@@ -63,6 +64,10 @@ public class DetailActivity extends AppCompatActivity {
                     }
                 }
             });
+
+            int imgMovieicon = R.drawable.baseline_movie_24;
+            imgIcon.setImageResource(imgMovieicon);
+
         } else if (intent.getParcelableExtra("tv_show") != null) {
             TvShow tvShow = intent.getParcelableExtra("tv_show");
 
@@ -89,6 +94,10 @@ public class DetailActivity extends AppCompatActivity {
                     }
                 }
             });
+
+            int imgTvShowicon = R.drawable.baseline_tv_24;
+            imgIcon.setImageResource(imgTvShowicon);
+
         } else {
             Bookmark bookmark = intent.getParcelableExtra("bookmark");
 
@@ -125,6 +134,9 @@ public class DetailActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
         }
+
+        int imgBookmarked = R.drawable.baseline_bookmark_24;
+        btnMark.setImageResource(imgBookmarked);
     }
     private void deleteFromBookmark(String nama) {
         long result = databaseHelper.deleteMovie(nama);
@@ -133,5 +145,8 @@ public class DetailActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
         }
+
+        int imgBookmark = R.drawable.baseline_bookmark_border_24;
+        btnMark.setImageResource(imgBookmark);
     }
 }

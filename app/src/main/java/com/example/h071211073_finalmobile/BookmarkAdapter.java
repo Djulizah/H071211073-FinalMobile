@@ -45,12 +45,13 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvYear;
-        ImageView imgPoster;
+        ImageView imgPoster, imgIcon;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tv_title);
             tvYear = itemView.findViewById(R.id.tv_year);
             imgPoster = itemView.findViewById(R.id.img_poster);
+            imgIcon = itemView.findViewById(R.id.img_icon);
         }
 
         public void setData(Bookmark bookmark) {
