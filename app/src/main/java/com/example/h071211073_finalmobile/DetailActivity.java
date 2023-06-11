@@ -29,6 +29,11 @@ public class DetailActivity extends AppCompatActivity {
         tvSynopsis = findViewById(R.id.tv_synopsis);
         btnMark = findViewById(R.id.btn_mark);
 
+        btnBack = findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(view -> {
+            onBackPressed();
+        });
+
         databaseHelper = new DatabaseHelper(this);
 
         Intent intent = getIntent();
@@ -46,20 +51,20 @@ public class DetailActivity extends AppCompatActivity {
             Glide.with(this)
                     .load(backdropUrl)
                     .into(imgBack);
-            tvSynopsis.setText(movie.getOverView());
+            tvSynopsis.setText(movie.getOverview());
 
             btnMark.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (!databaseHelper.isMovieInFavorites(movie.getTitle())) {
-                        addToBookmark(movie.getId(), movie.getPosterPath(), movie.getTitle(), movie.getReleaseDate(), movie.getVoteAverage(), movie.getBackdropPath(), movie.getOverView());
+                        addToBookmark(movie.getId(), posterUrl, movie.getTitle(), movie.getReleaseDate(), movie.getVoteAverage(), backdropUrl, movie.getOverview());
                     } else {
                         deleteFromBookmark(movie.getTitle());
                     }
                 }
             });
-        } else if (intent.getParcelableExtra("show") != null) {
-            TvShow tvShow = intent.getParcelableExtra("show");
+        } else if (intent.getParcelableExtra("tv_show") != null) {
+            TvShow tvShow = intent.getParcelableExtra("tv_show");
 
             String posterUrl = "https://image.tmdb.org/t/p/w300_and_h450_bestv2/" + tvShow.getPosterPath();
             String backdropUrl = "https://image.tmdb.org/t/p/w300_and_h450_bestv2/" + tvShow.getBackdropPath();
@@ -72,13 +77,13 @@ public class DetailActivity extends AppCompatActivity {
             Glide.with(this)
                     .load(backdropUrl)
                     .into(imgBack);
-            tvSynopsis.setText(tvShow.getOverView());
+            tvSynopsis.setText(tvShow.getOverview());
 
             btnMark.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (!databaseHelper.isMovieInFavorites(tvShow.getName())) {
-                        addToBookmark(tvShow.getId(), tvShow.getPosterPath(), tvShow.getName(), tvShow.getFirstAirDate(), tvShow.getVoteAverage(), tvShow.getBackdropPath(), tvShow.getOverView());
+                        addToBookmark(tvShow.getId(), posterUrl, tvShow.getName(), tvShow.getFirstAirDate(), tvShow.getVoteAverage(), backdropUrl, tvShow.getOverview());
                     } else {
                         deleteFromBookmark(tvShow.getName());
                     }
@@ -91,7 +96,7 @@ public class DetailActivity extends AppCompatActivity {
             String backdropUrl = "https://image.tmdb.org/t/p/w300_and_h450_bestv2/" + bookmark.getBackdropPath();
 
             tvTitle.setText(bookmark.getTitle());
-            tvRating.setText(String.valueOf(bookmark.getVoteAvg()));
+            tvRating.setText(String.valueOf(bookmark.getVoteAverage()));
             Glide.with(this)
                     .load(posterUrl)
                     .into(imgPoster);
@@ -104,7 +109,7 @@ public class DetailActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if (!databaseHelper.isMovieInFavorites(bookmark.getTitle())) {
-                        addToBookmark(bookmark.getId(), bookmark.getPosterPath(), bookmark.getTitle(), bookmark.getDate(), bookmark.getVoteAvg(), bookmark.getBackdropPath(), bookmark.getOverview());
+                        addToBookmark(bookmark.getId(), posterUrl, bookmark.getTitle(), bookmark.getDate(), bookmark.getVoteAverage(), backdropUrl, bookmark.getOverview());
                     } else {
                         deleteFromBookmark(bookmark.getTitle());
                     }
@@ -116,7 +121,7 @@ public class DetailActivity extends AppCompatActivity {
         Movie movie = new Movie(id, posterUrl, title, releaseDate, voteAverage, backdropUrl, overview);
         long result = databaseHelper.insertMovie(movie);
         if (result != -1) {
-            Toast.makeText(this, "Added to favorites", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Added to bookmark", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
         }
@@ -124,7 +129,7 @@ public class DetailActivity extends AppCompatActivity {
     private void deleteFromBookmark(String nama) {
         long result = databaseHelper.deleteMovie(nama);
         if (result != -1) {
-            Toast.makeText(this, "Deleted to favorites", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Deleted from bookmark", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
         }

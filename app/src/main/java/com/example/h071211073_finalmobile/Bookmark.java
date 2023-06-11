@@ -10,18 +10,46 @@ public class Bookmark implements Parcelable {
     private String posterPath;
     private String title;
     private String date;
-    private double voteAvg;
+    private double voteAverage;
     private String backdropPath;
     private String overview;
 
-    public Bookmark(int id, String posterPath, String title, String date, double voteAvg, String backdropPath, String overview) {
+    public Bookmark(int id, String posterPath, String title, String date, double voteAverage, String backdropPath, String overview) {
         this.id = id;
         this.posterPath = posterPath;
         this.title = title;
         this.date = date;
-        this.voteAvg = voteAvg;
+        this.voteAverage = voteAverage;
         this.backdropPath = backdropPath;
         this.overview = overview;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getPosterPath() {
+        return posterPath;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public double getVoteAverage() {
+        return voteAverage;
+    }
+
+    public String getBackdropPath() {
+        return backdropPath;
+    }
+
+    public String getOverview() {
+        return overview;
     }
 
     protected Bookmark(Parcel in) {
@@ -29,7 +57,7 @@ public class Bookmark implements Parcelable {
         posterPath = in.readString();
         title = in.readString();
         date = in.readString();
-        voteAvg = in.readDouble();
+        voteAverage = in.readDouble();
         backdropPath = in.readString();
         overview = in.readString();
     }
@@ -57,36 +85,8 @@ public class Bookmark implements Parcelable {
         parcel.writeString(posterPath);
         parcel.writeString(title);
         parcel.writeString(date);
-        parcel.writeDouble(voteAvg);
+        parcel.writeDouble(voteAverage);
         parcel.writeString(backdropPath);
         parcel.writeString(overview);
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getPosterPath() {
-        return posterPath;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public double getVoteAvg() {
-        return voteAvg;
-    }
-
-    public String getBackdropPath() {
-        return backdropPath;
-    }
-
-    public String getOverview() {
-        return overview;
     }
 }

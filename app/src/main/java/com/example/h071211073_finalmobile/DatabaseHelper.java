@@ -47,19 +47,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(DatabaseContract.bookmarkColumns.COLUMN_TITLE, movie.getTitle());
         values.put(DatabaseContract.bookmarkColumns.COLUMN_DATE, movie.getReleaseDate());
-        values.put(DatabaseContract.bookmarkColumns.COLUMN_OVERVIEW, movie.getOverView());
+        values.put(DatabaseContract.bookmarkColumns.COLUMN_OVERVIEW, movie.getOverview());
         values.put(DatabaseContract.bookmarkColumns.COLUMN_POSTER_PATH, movie.getPosterPath());
         values.put(DatabaseContract.bookmarkColumns.COLUMN_BACKDROP_PATH, movie.getBackdropPath());
         values.put(DatabaseContract.bookmarkColumns.COLUMN_VOTE_AVERAGE, movie.getVoteAverage());
 
         return sqLiteDatabase.insert(DatabaseContract.TABLE_NAME, null, values);
     }
+
     public int updateMovie(Movie movie) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DatabaseContract.bookmarkColumns.COLUMN_TITLE, movie.getTitle());
         values.put(DatabaseContract.bookmarkColumns.COLUMN_DATE, movie.getReleaseDate());
-        values.put(DatabaseContract.bookmarkColumns.COLUMN_OVERVIEW, movie.getOverView());
+        values.put(DatabaseContract.bookmarkColumns.COLUMN_OVERVIEW, movie.getOverview());
         values.put(DatabaseContract.bookmarkColumns.COLUMN_POSTER_PATH, movie.getPosterPath());
         values.put(DatabaseContract.bookmarkColumns.COLUMN_BACKDROP_PATH, movie.getBackdropPath());
         values.put(DatabaseContract.bookmarkColumns.COLUMN_VOTE_AVERAGE, movie.getVoteAverage());

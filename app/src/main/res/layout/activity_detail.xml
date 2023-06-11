@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bgDark"
     android:orientation="vertical"
     tools:context=".DetailActivity">
 
@@ -22,7 +23,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
                 android:scaleType="centerCrop"
-                android:src="@color/purple_200"/>
+                android:src="@color/Charchoal"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_y_top"/>
 
             <ImageView
                 android:id="@+id/btn_back"
@@ -46,28 +52,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/container_upper"
-            android:layout_margin="10dp">
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp">
 
             <ImageView
                 android:id="@+id/img_poster"
                 android:layout_width="100dp"
                 android:layout_height="150dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/card"
                 android:layout_margin="10dp"
-                android:src="@color/purple_500"/>
+                android:src="@color/Charchoal"
+                app:layout_constraintRight_toLeftOf="@id/card"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                app:layout_constraintLeft_toRightOf="@id/img_poster"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/img_poster"
-                app:layout_constraintBottom_toBottomOf="@id/img_poster"
                 android:layout_margin="10dp"
-                android:elevation="0.1dp">
+                android:elevation="0.1dp"
+                app:layout_constraintBottom_toBottomOf="@id/img_poster"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/img_poster"
+                app:layout_constraintTop_toTopOf="@id/img_poster"
+                app:cardBackgroundColor="@color/cardview_dark_background">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -80,15 +91,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Title"
+                        android:textSize="20sp"
                         android:textStyle="bold"
-                        android:textSize="20sp"/>
+                        android:textColor="@color/smokeWhite"/>
 
                     <TextView
                         android:id="@+id/tv_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Date"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp"
+                        android:textColor="@color/smokeWhite"/>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -100,22 +113,23 @@
                             android:id="@+id/img_star"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/baseline_star_rate_24"/>
+                            android:src="@drawable/baseline_star_rate_24" />
 
                         <TextView
                             android:id="@+id/tv_rating"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/img_star"
                             android:text="rating num"
                             android:textSize="15sp"
-                            android:layout_toRightOf="@id/img_star"/>
+                            android:textColor="@color/smokeWhite"/>
 
                         <ImageView
                             android:id="@+id/img_icon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/baseline_movie_24"
-                            android:layout_alignParentRight="true"/>
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/baseline_movie_24" />
 
                     </RelativeLayout>
 
@@ -131,7 +145,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/container_middle"
             android:layout_margin="10dp"
-            android:elevation="0.1dp">
+            android:elevation="0.1dp"
+            app:cardBackgroundColor="@color/cardview_dark_background">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -144,14 +159,16 @@
                     android:layout_height="wrap_content"
                     android:text="Synopsis"
                     android:textStyle="bold"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:textColor="@color/smokeWhite"/>
 
                 <TextView
                     android:id="@+id/tv_synopsis"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="synopsis description"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:textColor="@color/smokeWhite"/>
 
             </LinearLayout>
 

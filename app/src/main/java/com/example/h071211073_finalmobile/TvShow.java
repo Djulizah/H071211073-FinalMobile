@@ -21,7 +21,17 @@ public class TvShow implements Parcelable {
     @SerializedName("backdrop_path")
     private String backdropPath;
     @SerializedName("overview")
-    private String overView;
+    private String overview;
+
+    public TvShow(int id, String posterPath, String name, String firstAirDate, Double voteAverage, String backdropPath, String overview) {
+        this.id = id;
+        this.posterPath = posterPath;
+        this.name = name;
+        this.firstAirDate = firstAirDate;
+        this.voteAverage = voteAverage;
+        this.backdropPath = backdropPath;
+        this.overview = overview;
+    }
 
     public int getId() {
         return id;
@@ -47,8 +57,8 @@ public class TvShow implements Parcelable {
         return backdropPath;
     }
 
-    public String getOverView() {
-        return overView;
+    public String getOverview() {
+        return overview;
     }
 
     protected TvShow(Parcel in) {
@@ -62,7 +72,7 @@ public class TvShow implements Parcelable {
             voteAverage = in.readDouble();
         }
         backdropPath = in.readString();
-        overView = in.readString();
+        overview = in.readString();
     }
 
     public static final Creator<TvShow> CREATOR = new Creator<TvShow>() {
@@ -95,6 +105,6 @@ public class TvShow implements Parcelable {
             parcel.writeDouble(voteAverage);
         }
         parcel.writeString(backdropPath);
-        parcel.writeString(overView);
+        parcel.writeString(overview);
     }
 }
